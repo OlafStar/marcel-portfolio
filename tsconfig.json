@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,9 +15,24 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "downlevelIteration": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "~styles/*": ["src/styles/*"],
+      "~public/*": ["public/*"],
+      "~assets/*": ["public/assets/*"],
+      "~components/*": ["src/components/*"],
+      "~atoms/*": ["src/components/atoms/*"],
+      "~molecules/*": ["src/components/molecules/*"],
+      "~organisms/*": ["src/components/organisms/*"],
+      "~pages/*": ["src/components/pages/*"],
+      "~api/*": ["src/api/*"],
+      "~types/*": ["src/types/*"],
+      "~abi/*": ["src/abi/*"],
+      "~utils/*": ["src/utils/*"],
+      "~providers/*": ["src/providers/*"],
+      "~hooks/*": ["src/hooks/*"],
+      "~constants/*": ["src/constants/*"],
+      "~config/*": ["src/config/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
