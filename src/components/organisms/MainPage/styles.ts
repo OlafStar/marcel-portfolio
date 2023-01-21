@@ -9,32 +9,20 @@ export const MainPageContainer = styled.div`
     overflow: hidden;
 `;
 
-export const LogoContainer = styled.div`
-    width: 100%;
-    padding: 40px 0px 40px 70px;
-    @media (max-width: 546px) {
-        display: none;
-    }
-`;
+type DesktopContentContainerProps = {
+    heightOfSite: number;
+};
 
-export const LogoContainerMobile = styled.div`
-    position: absolute;
-    top: 0;
-    z-index: 2;
-    padding: 42px 0px 42px 34px;
-    width: 100%;
-    @media (min-width: 547px) {
-        display: none;
-    }
-`;
-
-export const DesktopContentContainer = styled.div`
+export const DesktopContentContainer = styled.div<DesktopContentContainerProps>`
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 77px;
     flex-direction: column;
+    padding-top: ${({heightOfSite}) =>
+        heightOfSite &&
+        `${heightOfSite * 0.15625 > 160 ? 160 : heightOfSite * 0.15625}px`};
     @media (max-width: 546px) {
         display: none;
     }

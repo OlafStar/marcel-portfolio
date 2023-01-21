@@ -2,7 +2,6 @@ import {
     BackgroundImage,
     Content,
     NameDescription,
-    LogoContainer,
     MainPageContainer,
     MeImage,
     Name,
@@ -13,7 +12,6 @@ import {
     MeImageMobile,
     ImageContainer,
     ScrollInfo,
-    LogoContainerMobile,
 } from './styles';
 import Logo from '~public/icons/logo.svg';
 import LogoMobile from '~public/icons/logo-mobile.svg';
@@ -25,20 +23,14 @@ import useDocumentSize from '~hooks/useDocumentSize';
 import {useMemo} from 'react';
 
 const MainPage = () => {
-    const {width} = useDocumentSize();
+    const {width, height} = useDocumentSize();
 
     const leftPositionOfImage = useMemo(() => {
         return width - 546;
     }, [width]);
     return (
         <MainPageContainer>
-            <LogoContainer>
-                <Logo />
-            </LogoContainer>
-            <LogoContainerMobile>
-                <LogoMobile />
-            </LogoContainerMobile>
-            <DesktopContentContainer>
+            <DesktopContentContainer heightOfSite={height}>
                 <Content>
                     <TextContainer>
                         <Name>{'Marceli Hajduk'}</Name>
