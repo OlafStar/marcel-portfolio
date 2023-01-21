@@ -5,9 +5,9 @@ type PageTitleProps = {
     color: 'white' | 'black';
 };
 
-const PageTitle = ({text}: PageTitleProps) => {
+const PageTitle = ({text, color}: PageTitleProps) => {
     return (
-        <PageTitleContainer>
+        <PageTitleContainer color={color}>
             <StyledText>{text}</StyledText>
             <Line />
         </PageTitleContainer>
