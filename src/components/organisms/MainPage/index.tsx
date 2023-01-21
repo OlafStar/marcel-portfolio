@@ -11,7 +11,6 @@ import {
     MobileContentContainer,
     MeImageMobile,
     ImageContainer,
-    ScrollInfo,
 } from './styles';
 import Logo from '~public/icons/logo.svg';
 import LogoMobile from '~public/icons/logo-mobile.svg';
@@ -51,7 +50,6 @@ const MainPage = () => {
                     <MeImageMobile src={meMobile.src} />
                 </ImageContainer>
             </MobileContentContainer>
-            <ScrollInfo>{'scroll'}</ScrollInfo>
         </MainPageContainer>
     );
 };
