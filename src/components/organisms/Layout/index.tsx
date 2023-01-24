@@ -1,6 +1,6 @@
 import {ReactNode} from 'react';
 import {HTMLHead} from './HTMLHead';
-import {Container, LogoContainer, LogoContainerMobile, ScrollInfo} from './styles';
+import {Container, LogoContainer, LogoContainerMobile} from './styles';
 import Logo from '~public/icons/logo.svg';
 import LogoMobile from '~public/icons/logo-mobile.svg';
 import {useRouter} from 'next/router';
@@ -26,7 +26,6 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
                     <LogoMobile />
                 </LogoContainerMobile>
                 {children}
-                <ScrollInfo>{'scroll'}</ScrollInfo>
             </Container>
         </>
     );

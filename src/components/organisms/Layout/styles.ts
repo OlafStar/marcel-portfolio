@@ -41,17 +41,3 @@ export const LogoContainerMobile = styled.div<LogoContainerProps>`
         display: none;
     }
 `;
-
-export const ScrollInfo = styled.div`
-    font-size: 16px;
-    font-weight: 300;
-    line-height: 20px;
-    letter-spacing: 0em;
-    position: absolute;
-    bottom: 53px;
-    right: 35px;
-    text-transform: uppercase;
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
-    color: white;
-`;
