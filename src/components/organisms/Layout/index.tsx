@@ -4,6 +4,8 @@ import {Container, LogoContainer, LogoContainerMobile} from './styles';
 import Logo from '~public/icons/logo.svg';
 import LogoMobile from '~public/icons/logo-mobile.svg';
 import {useRouter} from 'next/router';
+import Navigation from '~components/molecules/Navigation';
+
 type LayoutProps = {
     children?: ReactNode;
 };
@@ -25,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
                 >
                     <LogoMobile />
                 </LogoContainerMobile>
+                <Navigation />
                 {children}
             </Container>
         </>
