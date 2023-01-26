@@ -1,11 +1,17 @@
 import {If} from '~components/atoms/If';
 import {ProjectsType} from '~constants/projects';
-import {ProjectLink, ProjectName, ProjectTileContainer, TextAndLink} from './styles';
+import ImageTilt from './ImageTilt';
+import {
+    ProjectLink,
+    ProjectName,
+    ProjectTileContainer,
+    TextAndLink,
+} from './styles';
 
 const ProjectTile = ({name, imgSrc, link}: ProjectsType) => {
     return (
         <ProjectTileContainer>
-            <img src={imgSrc.src} />
+            <ImageTilt src={imgSrc.src} />
             <TextAndLink>
                 <ProjectName>{name}</ProjectName>
                 <If condition={link}>
