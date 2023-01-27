@@ -63,7 +63,7 @@ const ScrollNavigationProvider = <T extends string>({
     const setScreenIndex = useCallback(
         (index: number | ((current: number) => number), reason?: Reasons) => {
             if (timeoutRef.current === null) {
-                const debounceTime = 3000;
+                const debounceTime = 1000;
 
                 timeoutRef.current = setTimeout(() => {
                     timeoutRef.current = null;
