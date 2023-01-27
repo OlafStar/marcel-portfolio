@@ -1,3 +1,4 @@
+import {TargetAndTransition, Transition, VariantLabels} from 'framer-motion';
 import {LogosAndText, LogosContainer} from './styles';
 
 type LogosSliderProps = {
@@ -8,6 +9,11 @@ type LogosSliderProps = {
     right?: number;
     bottom?: number;
     margin?: string;
+    isMobile?: boolean;
+    exit?: TargetAndTransition | VariantLabels | undefined;
+    initial?: boolean | VariantLabels | undefined | any;
+    animate?: TargetAndTransition | VariantLabels | undefined;
+    transition?: Transition | undefined;
 };
 
 const LogosSlider = ({
@@ -17,10 +23,24 @@ const LogosSlider = ({
     left,
     right,
     bottom,
-    margin
+    margin,
+    exit,
+    initial,
+    animate,
+    transition
 }: LogosSliderProps) => {
     return (
-        <LogosAndText bottom={bottom} left={left} right={right} top={top} margin={margin}>
+        <LogosAndText
+            bottom={bottom}
+            left={left}
+            right={right}
+            top={top}
+            margin={margin}
+            exit={exit}
+            initial={initial}
+            animate={animate}
+            transition={transition}
+        >
             <div>{text}</div>
             <LogosContainer>{children}</LogosContainer>
         </LogosAndText>

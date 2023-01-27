@@ -1,6 +1,7 @@
+import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
-export const AboutPageContainer = styled.div`
+export const AboutPageContainer = styled(motion.section)`
     width: 100%;
     height: 100%;
     background-color: #2b3135;
@@ -10,6 +11,7 @@ export const AboutPageContainer = styled.div`
     flex-direction: column;
     gap: 22px;
     justify-content: center;
+    position: relative;
 
     @media (max-width: 790px) {
         padding: 120px var(--h-padding) 40px var(--h-padding);
@@ -33,7 +35,7 @@ type ImageContainerProps = {
     height: number;
 };
 
-export const ImageContainer = styled.div<ImageContainerProps>`
+export const ImageContainer = styled(motion.div)<ImageContainerProps>`
     img {
         height: ${({height}) => height && `${height * 0.4697265625}px`};
         max-width: 350px;
@@ -69,13 +71,13 @@ export const ContentContainer = styled.div`
     }
 `;
 
-export const FirstLine = styled.div`
+export const FirstLine = styled(motion.div)`
     max-width: 500px;
 `;
 
-export const SecondLine = styled.div``;
+export const SecondLine = styled(motion.div)``;
 
-export const ThirdLine = styled.div`
+export const ThirdLine = styled(motion.div)`
     max-width: 310px;
 `;
 

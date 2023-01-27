@@ -1,10 +1,12 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 type ContactPageContainerProps = {
     heightOfSite: number;
 };
 
-export const ContactPageContainer = styled.div<ContactPageContainerProps>`
+export const ContactPageContainer = styled(motion.section)<ContactPageContainerProps>`
+    min-height: 100vh;
     padding: ${({heightOfSite}) =>
         heightOfSite &&
         `${
@@ -15,7 +17,7 @@ export const ContactPageContainer = styled.div<ContactPageContainerProps>`
     }
 `;
 
-export const ContentContainer = styled.div`
+export const ContentContainer = styled(motion.div)`
     padding-top: 56px;
     display: flex;
     flex-direction: column;

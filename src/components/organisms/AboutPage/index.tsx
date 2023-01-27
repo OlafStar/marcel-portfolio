@@ -27,11 +27,22 @@ const AboutPage = () => {
         <AboutPageContainer>
             <PageTitle text="O mnie" color="white" />
             <ContentContainer ref={scrollRef}>
-                <ImageContainer height={height}>
+                <ImageContainer
+                    height={height}
+                    exit={{x: -50, opacity: 0}}
+                    initial={{x: -50, opacity: 0}}
+                    animate={{x: 0, opacity: 1}}
+                    transition={{delay: 0.5}}
+                >
                     <img src={marelGif.src} />
                 </ImageContainer>
                 <TextContainer>
-                    <FirstLine>
+                    <FirstLine
+                        exit={{x: 50, opacity: 0}}
+                        initial={{x: 50, opacity: 0}}
+                        animate={{x: 0, opacity: 1}}
+                        transition={{delay: 0.7}}
+                    >
                         {
                             'Cześć! Nazywam się Marceli, a projektowanie sprawia mi przyjemność. Od stron, przez grafiki, aż po ciuchy 😎'
                         }
@@ -40,6 +51,11 @@ const AboutPage = () => {
                         <LogosSlider
                             text={'Programy z których lubię korzystać'}
                             margin="20px 0"
+                            isMobile
+                            exit={{x: 50, opacity: 0}}
+                            initial={{x: 50, opacity: 0}}
+                            animate={{x: 0, opacity: 1}}
+                            transition={{delay: 0.8}}
                         >
                             <LogoFigma />
                             <LogoAI />
@@ -49,7 +65,12 @@ const AboutPage = () => {
                             <LogoFLStudio />
                         </LogosSlider>
                     </MobileWrapper>
-                    <SecondLine>
+                    <SecondLine
+                        exit={{x: 50, opacity: 0}}
+                        initial={{x: 50, opacity: 0}}
+                        animate={{x: 0, opacity: 1}}
+                        transition={{delay: 0.9}}
+                    >
                         {
                             'Od zawsze interesuje się szatą graficzną, stąd moje zainteresowanie do takich programów jak Adobe Photoshop czy Illustrator. Lubię eksperymentować również w takich programach jak After Effects oraz Blender. Stąd wzięła się moja sympatia do Figmy, ponieważ dzięki znajomości wyżej wymienionych środowisk czułem się jak ryba w wodzie.'
                         }
@@ -58,6 +79,11 @@ const AboutPage = () => {
                         <LogosSlider
                             text={'Programy z których lubię korzystać'}
                             margin="0 0 8px 0"
+                            isMobile
+                            exit={{x: 50, opacity: 0}}
+                            initial={{x: 50, opacity: 0}}
+                            animate={{x: 0, opacity: 1}}
+                            transition={{delay: 1.0}}
                         >
                             <LogoFigma />
                             <LogoAI />
@@ -67,13 +93,22 @@ const AboutPage = () => {
                             <LogoFLStudio />
                         </LogosSlider>
                     </MobileWrapper>
-                    <ThirdLine>{`Pół swojego życia grałem w siatkówkę, poza tym lubię robić muzykę. Mix/master w FL Studio to mój drugi dom 🙂`}</ThirdLine>
+                    <ThirdLine
+                        exit={{x: 50, opacity: 0}}
+                        initial={{x: 50, opacity: 0}}
+                        animate={{x: 0, opacity: 1}}
+                        transition={{delay: 1.1}}
+                    >{`Pół swojego życia grałem w siatkówkę, poza tym lubię robić muzykę. Mix/master w FL Studio to mój drugi dom 🙂`}</ThirdLine>
                 </TextContainer>
             </ContentContainer>
             <LogosSlider
                 text={'Programy z których lubię korzystać'}
                 bottom={40}
                 left={70}
+                exit={{x: -50, opacity: 0}}
+                initial={{x: -50, opacity: 0}}
+                animate={{x: 0, opacity: 1}}
+                transition={{delay: 0.6}}
             >
                 <LogoFigma />
                 <LogoAI />
@@ -86,6 +121,10 @@ const AboutPage = () => {
                 text={'Programy z których lubię korzystać'}
                 bottom={40}
                 right={70}
+                exit={{x: 50, opacity: 0}}
+                initial={{x: 50, opacity: 0}}
+                animate={{x: 0, opacity: 1}}
+                transition={{delay: 0.6}}
             >
                 <LogoFigma />
                 <LogoAI />

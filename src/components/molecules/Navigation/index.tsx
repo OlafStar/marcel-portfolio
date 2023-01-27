@@ -10,37 +10,51 @@ import Projects from '~public/icons/projects.svg';
 import Contact from '~public/icons/contact.svg';
 import About from '~public/icons/about.svg';
 import {motion} from 'framer-motion';
-import {useRouter} from 'next/router';
+import {useScrollNavigation} from '~providers/ScrollNavigation';
 const Navigation = () => {
-    const router = useRouter();
-
-    console.log(router);
+    const {screen, setScreen} = useScrollNavigation();
 
     return (
         <NavigationContainer>
             <RelativeWrapper>
                 <ButtonsContainer>
-                    <StyledButton onClick={() => {router.push('/')}}>
+                    <StyledButton
+                        onClick={() => {
+                            setScreen('home');
+                        }}
+                    >
                         <Home />
-                        {router.asPath === '/' && (
+                        {screen === 'home' && (
                             <motion.div className="line" layoutId="line" />
                         )}
                     </StyledButton>
-                    <StyledButton onClick={() => {router.push('/projects')}}>
+                    <StyledButton
+                        onClick={() => {
+                            setScreen('projects');
+                        }}
+                    >
                         <Projects />
-                        {router.asPath === '/projects' && (
+                        {screen === 'projects' && (
                             <motion.div className="line" layoutId="line" />
                         )}
                     </StyledButton>
-                    <StyledButton onClick={() => {router.push('/contact')}}>
+                    <StyledButton
+                        onClick={() => {
+                            setScreen('contact')
+                        }}
+                    >
                         <Contact />
-                        {router.asPath === '/contact' && (
+                        {screen === 'contact' && (
                             <motion.div className="line" layoutId="line" />
                         )}
                     </StyledButton>
-                    <StyledButton onClick={() => {router.push('/about')}}>
+                    <StyledButton
+                        onClick={() => {
+                            setScreen('about')
+                        }}
+                    >
                         <About />
-                        {router.asPath === '/about' && (
+                        {screen === 'about' && (
                             <motion.div className="line" layoutId="line" />
                         )}
                     </StyledButton>

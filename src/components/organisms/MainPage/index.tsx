@@ -20,6 +20,7 @@ import me from '~public/icons/me.png';
 import meMobile from '~public/icons/me-mobile.png';
 import useDocumentSize from '~hooks/useDocumentSize';
 import {useMemo} from 'react';
+import {AnimatePresence} from 'framer-motion';
 
 const MainPage = () => {
     const {width, height} = useDocumentSize();
@@ -29,7 +30,12 @@ const MainPage = () => {
     }, [width]);
     return (
         <MainPageContainer>
-            <DesktopContentContainer heightOfSite={height}>
+            <DesktopContentContainer
+                heightOfSite={height}
+                exit={{opacity: 0, y: -90}}
+                initial={{opacity: 0, y: -90}}
+                animate={{opacity: 1, y: 0}}
+            >
                 <Content>
                     <TextContainer>
                         <Name>{'Marceli Hajduk'}</Name>

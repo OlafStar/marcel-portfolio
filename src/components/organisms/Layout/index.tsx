@@ -5,25 +5,24 @@ import Logo from '~public/icons/logo.svg';
 import LogoMobile from '~public/icons/logo-mobile.svg';
 import {useRouter} from 'next/router';
 import Navigation from '~components/molecules/Navigation';
+import {useScrollNavigation} from '~providers/ScrollNavigation';
 
 type LayoutProps = {
     children?: ReactNode;
 };
 
 const Layout: React.FC<LayoutProps> = ({children}) => {
-    const router = useRouter();
+    const {screen} = useScrollNavigation();
     return (
         <>
             <HTMLHead pageTitle="Marel Portfolio" />
 
             <Container>
-                <LogoContainer
-                    color={router.asPath === '/contact' ? 'black' : 'white'}
-                >
+                <LogoContainer color={screen === 'contact' ? 'black' : 'white'}>
                     <Logo />
                 </LogoContainer>
                 <LogoContainerMobile
-                    color={router.asPath === '/contact' ? 'black' : 'white'}
+                    color={screen === 'contact' ? 'black' : 'white'}
                 >
                     <LogoMobile />
                 </LogoContainerMobile>

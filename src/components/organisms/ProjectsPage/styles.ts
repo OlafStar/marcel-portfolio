@@ -1,7 +1,8 @@
+import {motion} from 'framer-motion';
 import styled from 'styled-components';
 import {ProjectTileContainer} from '~components/molecules/ProjectTile/styles';
 
-export const ProjectsPageContainer = styled.div`
+export const ProjectsPageContainer = styled(motion.section)`
     width: 100%;
     height: 100%;
     background-color: #2b3135;
@@ -31,13 +32,13 @@ export const ProjectsContainer = styled.div`
     }
 `;
 
-export const LeftColumn = styled.div`
+export const LeftColumn = styled(motion.div)`
     @media (max-width: 590px) {
         max-width: 100%;
     }
 `;
 
-export const RightColumn = styled.div`
+export const RightColumn = styled(motion.div)`
     padding-top: 176px;
     @media (max-width: 1035px) {
         padding-top: 68px;

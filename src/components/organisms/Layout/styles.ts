@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
 
     @media (max-width: 1266px) {
         --h-padding: 70px;
@@ -21,7 +20,7 @@ type LogoContainerProps = {
 export const LogoContainer = styled.div<LogoContainerProps>`
     width: 100%;
     padding: 40px 0px 40px 70px;
-    position: absolute;
+    position: fixed;
     z-index: 2;
     color: ${({color}) => (color === 'black' ? 'black' : 'white')};
     @media (max-width: 546px) {
@@ -30,7 +29,7 @@ export const LogoContainer = styled.div<LogoContainerProps>`
 `;
 
 export const LogoContainerMobile = styled.div<LogoContainerProps>`
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 2;
     padding: 42px 0px 42px 34px;

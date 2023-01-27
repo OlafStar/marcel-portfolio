@@ -30,12 +30,22 @@ const ProjectsPage = () => {
             <PageTitle text="Projects" color="white" />
             <ScrollWrapper ref={scrollRef}>
                 <ProjectsContainer>
-                    <LeftColumn>
+                    <LeftColumn
+                        exit={{x: -50, opacity: 0}}
+                        initial={{x: -50, opacity: 0}}
+                        animate={{x: 0, opacity: 1}}
+                        transition={{delay: 1}}
+                    >
                         {sortedProjects.leftProjects.map((item) => {
                             return <ProjectTile {...item} />;
                         })}
                     </LeftColumn>
-                    <RightColumn>
+                    <RightColumn
+                        exit={{x: 50, opacity: 0}}
+                        initial={{x: 50, opacity: 0}}
+                        animate={{x: 0, opacity: 1}}
+                        transition={{delay: 1}}
+                    >
                         {sortedProjects.rightProjects.map((item) => {
                             return <ProjectTile {...item} />;
                         })}

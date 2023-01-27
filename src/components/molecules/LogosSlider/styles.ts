@@ -1,3 +1,4 @@
+import {motion} from 'framer-motion';
 import styled, {css} from 'styled-components';
 
 type BottomContainerProps = {
@@ -8,7 +9,7 @@ type BottomContainerProps = {
     margin?: string;
 };
 
-export const LogosAndText = styled.div<BottomContainerProps>`
+export const LogosAndText = styled(motion.div)<BottomContainerProps>`
     ${({top, bottom, left, right}) =>
         Boolean(top || bottom || left || right) &&
         css`

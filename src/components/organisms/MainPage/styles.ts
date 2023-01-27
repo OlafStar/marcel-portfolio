@@ -1,6 +1,7 @@
+import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
-export const MainPageContainer = styled.div`
+export const MainPageContainer = styled(motion.section)`
     width: 100%;
     height: 100%;
     background-color: #2b3135;
@@ -13,7 +14,9 @@ type DesktopContentContainerProps = {
     heightOfSite: number;
 };
 
-export const DesktopContentContainer = styled.div<DesktopContentContainerProps>`
+export const DesktopContentContainer = styled(
+    motion.div,
+)<DesktopContentContainerProps>`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -138,4 +141,3 @@ export const ImageContainer = styled.div<ImageContainerProps>`
     top: -222px;
     left: ${({left}) => left && `${left}px`};
 `;
-

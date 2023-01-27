@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NavigationContainer = styled.div`
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 50%;
     transform: translateY(-50%);

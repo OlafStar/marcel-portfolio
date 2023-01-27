@@ -26,7 +26,12 @@ const ContactPage = () => {
     return (
         <ContactPageContainer heightOfSite={height}>
             <PageTitle text="Skontaktuj się ze mną" color="black" />
-            <ContentContainer>
+            <ContentContainer
+                exit={{y: 50, opacity: 0}}
+                initial={{y: 50, opacity: 0}}
+                animate={{y: 0, opacity: 1}}
+                transition={{delay: 0.8}}
+            >
                 <MailContainer
                     onClick={() => copyToClipboard('hajdukmarceli@gmail.com')}
                 >
