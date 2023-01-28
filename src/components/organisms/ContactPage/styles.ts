@@ -7,6 +7,7 @@ type ContactPageContainerProps = {
 
 export const ContactPageContainer = styled(motion.section)<ContactPageContainerProps>`
     min-height: 100vh;
+    position: relative;
     padding: ${({heightOfSite}) =>
         heightOfSite &&
         `${
@@ -16,6 +17,12 @@ export const ContactPageContainer = styled(motion.section)<ContactPageContainerP
         padding: 118px var(--h-padding) 0 var(--h-padding);
     }
 `;
+
+export const BgAnimationDiv = styled(motion.div)`
+    background-color: #2b3135;
+    position: absolute;
+    inset: 0 0 0 0;
+`
 
 export const ContentContainer = styled(motion.div)`
     padding-top: 56px;

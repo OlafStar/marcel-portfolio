@@ -20,7 +20,8 @@ import me from '~public/icons/me.png';
 import meMobile from '~public/icons/me-mobile.png';
 import useDocumentSize from '~hooks/useDocumentSize';
 import {useMemo} from 'react';
-import {AnimatePresence} from 'framer-motion';
+import {useIsPresent} from 'framer-motion';
+import {useScrollNavigation} from '~providers/ScrollNavigation';
 
 const MainPage = () => {
     const {width, height} = useDocumentSize();
@@ -28,6 +29,10 @@ const MainPage = () => {
     const leftPositionOfImage = useMemo(() => {
         return width - 546;
     }, [width]);
+
+    const isPresent = useIsPresent();
+    const {previous} = useScrollNavigation();
+
     return (
         <MainPageContainer>
             <DesktopContentContainer
@@ -35,6 +40,7 @@ const MainPage = () => {
                 exit={{opacity: 0, y: -90}}
                 initial={{opacity: 0, y: -90}}
                 animate={{opacity: 1, y: 0}}
+                transition={{delay: isPresent && previous ? 1.5 : 0}}
             >
                 <Content>
                     <TextContainer>

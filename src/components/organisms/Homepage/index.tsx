@@ -1,3 +1,4 @@
+import {AnimatePresence} from 'framer-motion';
 import {ReactNode} from 'react';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
 import AboutPage from '../AboutPage';
@@ -15,12 +16,12 @@ const Homepage = () => {
     const {screen} = useScrollNavigation();
     const include = includeScreen(screen);
     return (
-        <>
+        <AnimatePresence>
             {include(['home'], <MainPage key="home" />)}
             {include(['projects'], <ProjectsPage key="projects" />)}
             {include(['contact'], <ContactPage key="contact" />)}
             {include(['about'], <AboutPage key="about" />)}
-        </>
+        </AnimatePresence>
     );
 };
 

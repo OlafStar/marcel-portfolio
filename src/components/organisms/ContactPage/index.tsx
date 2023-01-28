@@ -1,6 +1,7 @@
 import PageTitle from '~components/molecules/PageTitle';
 import useDocumentSize from '~hooks/useDocumentSize';
 import {
+    BgAnimationDiv,
     ContactPageContainer,
     ContentContainer,
     MailContainer,
@@ -20,17 +21,38 @@ import {
     DesktopWrapper,
     MobileWrapper,
 } from '~components/molecules/ContactTile/styles';
+import {easeInOut, useIsPresent} from 'framer-motion';
+import {useScrollNavigation} from '~providers/ScrollNavigation';
+import {useMemo} from 'react';
 
 const ContactPage = () => {
     const {height} = useDocumentSize();
+    const {previous} = useScrollNavigation();
+
+    const isPresent = useIsPresent();
+
+    const exitDelay = useMemo(() => {
+        if (isPresent && previous === 'home')
+            return {titleDelay: 1.5, contentDelay: 2, bgDelay: 1};
+        if (isPresent && previous === 'projects')
+            return {titleDelay: 1.5, contentDelay: 2, bgDelay: 1};
+        if (isPresent && previous === 'about')
+            return {titleDelay: 1.5, contentDelay: 2, bgDelay: 1};
+
+        return {titleDelay: 0, contentDelay: 0, bgDelay: 1};
+    }, [isPresent, previous]);
     return (
         <ContactPageContainer heightOfSite={height}>
-            <PageTitle text="Skontaktuj się ze mną" color="black" />
+            <PageTitle
+                text="Skontaktuj się ze mną"
+                color="black"
+                delay={exitDelay.titleDelay}
+            />
             <ContentContainer
                 exit={{y: 50, opacity: 0}}
                 initial={{y: 50, opacity: 0}}
                 animate={{y: 0, opacity: 1}}
-                transition={{delay: 0.8}}
+                transition={{delay: exitDelay.contentDelay}}
             >
                 <MailContainer
                     onClick={() => copyToClipboard('hajdukmarceli@gmail.com')}
@@ -64,6 +86,18 @@ const ContactPage = () => {
                     </Row>
                 </TilesContainer>
             </ContentContainer>
+            {previous && (
+                <BgAnimationDiv
+                    exit={{y: 0}}
+                    initial={{y: 0}}
+                    animate={{y: '100%'}}
+                    transition={{
+                        duration: 0.5,
+                        ease: easeInOut,
+                        delay: exitDelay.bgDelay,
+                    }}
+                />
+            )}
         </ContactPageContainer>
     );
 };
