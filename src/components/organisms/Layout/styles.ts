@@ -24,6 +24,8 @@ export const LogoContainer = styled.div<LogoContainerProps>`
     position: fixed;
     z-index: 2;
     color: ${({color}) => (color === 'black' ? 'black' : 'white')};
+
+    transition: color 2s ease-in-out;
     @media (max-width: 546px) {
         display: none;
     }
@@ -37,6 +39,7 @@ export const LogoContainerMobile = styled.div<LogoContainerProps>`
     width: 100%;
     color: ${({color}) => (color === 'black' ? 'black' : 'white')};
 
+    transition: color 2s ease-in-out;
     @media (min-width: 547px) {
         display: none;
     }

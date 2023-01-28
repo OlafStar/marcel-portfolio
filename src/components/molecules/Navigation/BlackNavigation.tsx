@@ -1,21 +1,21 @@
 import {
     ButtonsContainer,
     LineContainer,
-    NavigationContainer,
+    BlackNavigationContainer,
     RelativeWrapper,
     StyledButton,
 } from './styles';
-import Home from '~public/icons/home.svg';
-import Projects from '~public/icons/projects.svg';
-import Contact from '~public/icons/contact.svg';
-import About from '~public/icons/about.svg';
+import HomeBlack from '~public/icons/home-contact.svg';
+import ProjectsBlack from '~public/icons/projects-contact.svg';
+import ContactBlack from '~public/icons/contact-contact.svg';
+import AboutBlack from '~public/icons/about-contact.svg';
 import {motion} from 'framer-motion';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
-const Navigation = () => {
+const BlackNavigation = () => {
     const {screen, setScreen} = useScrollNavigation();
 
     return (
-        <NavigationContainer screen={screen}>
+        <BlackNavigationContainer screen={screen}>
             <RelativeWrapper>
                 <ButtonsContainer>
                     <StyledButton
@@ -23,9 +23,9 @@ const Navigation = () => {
                             setScreen('home');
                         }}
                     >
-                        <Home />
+                        <HomeBlack />
                         {screen === 'home' && (
-                            <motion.div className="line" layoutId="line" />
+                            <motion.div className="line" layoutId="lineBlack" />
                         )}
                     </StyledButton>
                     <StyledButton
@@ -33,36 +33,36 @@ const Navigation = () => {
                             setScreen('projects');
                         }}
                     >
-                        <Projects />
+                        <ProjectsBlack />
                         {screen === 'projects' && (
-                            <motion.div className="line" layoutId="line" />
+                            <motion.div className="line" layoutId="lineBlack" />
                         )}
                     </StyledButton>
                     <StyledButton
                         onClick={() => {
-                            setScreen('contact')
+                            setScreen('contact');
                         }}
                     >
-                        <Contact />
+                        <ContactBlack />
                         {screen === 'contact' && (
-                            <motion.div className="line" layoutId="line" />
+                            <motion.div className="line" layoutId="lineBlack" />
                         )}
                     </StyledButton>
                     <StyledButton
                         onClick={() => {
-                            setScreen('about')
+                            setScreen('about');
                         }}
                     >
-                        <About />
+                        <AboutBlack />
                         {screen === 'about' && (
-                            <motion.div className="line" layoutId="line" />
+                            <motion.div className="line" layoutId="lineBlack" />
                         )}
                     </StyledButton>
                 </ButtonsContainer>
                 <LineContainer />
             </RelativeWrapper>
-        </NavigationContainer>
+        </BlackNavigationContainer>
     );
 };
 
-export default Navigation;
+export default BlackNavigation;

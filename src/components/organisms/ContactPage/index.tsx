@@ -27,7 +27,7 @@ import {useMemo} from 'react';
 
 const ContactPage = () => {
     const {height} = useDocumentSize();
-    const {previous} = useScrollNavigation();
+    const {screen, previous} = useScrollNavigation();
 
     const isPresent = useIsPresent();
 
@@ -41,6 +41,16 @@ const ContactPage = () => {
 
         return {titleDelay: 0, contentDelay: 0, bgDelay: 1};
     }, [isPresent, previous]);
+
+    const bgAnimationPosition = useMemo(() => {
+        if (
+            (isPresent && previous === 'home') ||
+            (isPresent && previous === 'projects')
+        )
+            return {y: '-100%'};
+        if (screen === 'about' && previous === 'contact') return {y: '-100%'};
+        if (isPresent && previous === 'about') return {y: '100%'};
+    }, [screen, previous, isPresent]);
     return (
         <ContactPageContainer heightOfSite={height}>
             <PageTitle
@@ -90,7 +100,7 @@ const ContactPage = () => {
                 <BgAnimationDiv
                     exit={{y: 0}}
                     initial={{y: 0}}
-                    animate={{y: '100%'}}
+                    animate={{y: bgAnimationPosition?.y}}
                     transition={{
                         duration: 0.5,
                         ease: easeInOut,
