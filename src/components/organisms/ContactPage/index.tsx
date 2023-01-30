@@ -24,10 +24,12 @@ import {
 import {easeInOut, useIsPresent} from 'framer-motion';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
 import {useMemo} from 'react';
+import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
+import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
 
 const ContactPage = () => {
     const {height} = useDocumentSize();
-    const {screen, previous} = useScrollNavigation();
+    const {screen, previous, previousScreen, next} = useScrollNavigation();
 
     const isPresent = useIsPresent();
 
@@ -51,6 +53,10 @@ const ContactPage = () => {
         if (screen === 'about' && previous === 'contact') return {y: '-100%'};
         if (isPresent && previous === 'about') return {y: '100%'};
     }, [screen, previous, isPresent]);
+
+    useMouseWheelControl({next, previousScreen});
+    useTouchDragControl({next, previousScreen});
+
     return (
         <ContactPageContainer heightOfSite={height}>
             <PageTitle

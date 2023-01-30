@@ -22,6 +22,8 @@ import useDocumentSize from '~hooks/useDocumentSize';
 import {useMemo} from 'react';
 import {useIsPresent} from 'framer-motion';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
+import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
+import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
 
 const MainPage = () => {
     const {width, height} = useDocumentSize();
@@ -31,7 +33,10 @@ const MainPage = () => {
     }, [width]);
 
     const isPresent = useIsPresent();
-    const {previous} = useScrollNavigation();
+    const {previous, next, previousScreen} = useScrollNavigation();
+
+    useMouseWheelControl({next, previousScreen});
+    useTouchDragControl({next, previousScreen});
 
     return (
         <MainPageContainer>

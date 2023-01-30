@@ -1,12 +1,16 @@
 import {useEffect, useRef} from 'react';
 
-import {ScrollNavigationContextType} from '.';
 import {shouldIgnoreEvent} from './useMouseDragControl';
 
 export default function useTouchDragControl({
     next: nextScreen,
     previousScreen,
-}: ScrollNavigationContextType<any>) {
+    isPrevented,
+}: {
+    next: () => void;
+    previousScreen: () => void;
+    isPrevented?: boolean;
+}) {
     const touchStartPositionRef = useRef<number | null>(null);
 
     useEffect(() => {
@@ -42,12 +46,18 @@ export default function useTouchDragControl({
             touchStartPositionRef.current = null;
         };
 
-        document.addEventListener('touchstart', handleTouchStart, false);
-        document.addEventListener('touchend', handleTouchEnd, false);
+        if (!isPrevented) {
+            document.addEventListener('touchstart', handleTouchStart, false);
+            document.addEventListener('touchend', handleTouchEnd, false);
 
-        return () => {
+            return () => {
+                document.removeEventListener('touchstart', handleTouchStart, false);
+                document.removeEventListener('touchend', handleTouchEnd, false);
+            };
+        }
+        if (isPrevented) {
             document.removeEventListener('touchstart', handleTouchStart, false);
             document.removeEventListener('touchend', handleTouchEnd, false);
-        };
-    }, [nextScreen, previousScreen]);
+        }
+    }, [nextScreen, previousScreen, isPrevented]);
 }

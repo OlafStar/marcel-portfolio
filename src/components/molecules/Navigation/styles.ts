@@ -10,7 +10,7 @@ export const NavigationContainer = styled.div<NavigationContainerProps>`
     top: 50%;
     transform: translateY(-50%);
     opacity: ${({screen}) => (screen !== 'contact' ? 1 : 0)};
-    transition: 2s ease-in-out;
+    transition: opacity 2s ease-in-out;
     z-index: ${({screen}) => (screen !== 'contact' ? 10 : 9)};
 `;
 
@@ -21,7 +21,7 @@ export const BlackNavigationContainer = styled.div<NavigationContainerProps>`
     transform: translateY(-50%);
 
     opacity: ${({screen}) => (screen === 'contact' ? 1 : 0)};
-    transition: 2s ease-in-out;
+    transition: opacity 2s ease-in-out;
 
     z-index: ${({screen}) => (screen === 'contact' ? 10 : 9)};
     .line {

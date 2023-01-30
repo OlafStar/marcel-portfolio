@@ -1,10 +1,12 @@
 import {useIsPresent} from 'framer-motion';
-import {useMemo} from 'react';
+import {useMemo, useRef, useState} from 'react';
 import PageTitle from '~components/molecules/PageTitle';
 import ProjectTile from '~components/molecules/ProjectTile';
 import useProjects, {ProjectsType} from '~constants/projects';
 import {usePreventPageScroll} from '~hooks/usePreventPageScroll';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
+import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
+import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
 import {
     LeftColumn,
     ProjectsContainer,
@@ -30,7 +32,7 @@ const ProjectsPage = () => {
 
     const isPresent = useIsPresent();
 
-    const {previous} = useScrollNavigation();
+    const {previous, next, previousScreen} = useScrollNavigation();
 
     const exitDelay = useMemo(() => {
         if (isPresent && previous === 'contact')
@@ -41,10 +43,34 @@ const ProjectsPage = () => {
             return {columnsDelay: 2, titleDelay: 1};
         return {columnsDelay: 0, titleDelay: 0};
     }, [isPresent, previous]);
+
+    const [isPrevented, setIsPrevented] = useState(false);
+
+    const handleMouseMove = (event: any) => {
+        if (scrollRef.current && scrollRef.current.contains(event.target)) {
+            setIsPrevented(true);
+        } else {
+            setIsPrevented(false);
+        }
+    };
+
+    useMouseWheelControl({next, previousScreen, isPrevented});
+    useTouchDragControl({next, previousScreen, isPrevented});
+
     return (
-        <ProjectsPageContainer>
-            <PageTitle text="Projects" color="white" delay={exitDelay.titleDelay}/>
-            <ScrollWrapper ref={scrollRef}>
+        <ProjectsPageContainer
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleMouseMove}
+            onTouchEnd={handleMouseMove}
+            onTouchMove={handleMouseMove}
+        >
+            <PageTitle text="Projects" color="white" delay={exitDelay.titleDelay} />
+            <ScrollWrapper
+                ref={scrollRef}
+                // onMouseOver={() => setIsPrevented(true)}
+                // onMouseLeave={() => setIsPrevented(false)}
+                // onTouchMove={() => setIsPrevented(true)}
+            >
                 <ProjectsContainer>
                     <LeftColumn
                         exit={{x: -50, opacity: 0}}

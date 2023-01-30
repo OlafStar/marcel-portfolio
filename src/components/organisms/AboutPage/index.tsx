@@ -22,6 +22,8 @@ import LogosSlider from '~components/molecules/LogosSlider';
 import {useIsPresent} from 'framer-motion';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
 import {useMemo} from 'react';
+import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
+import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
 
 const AboutPage = () => {
     const {height} = useDocumentSize();
@@ -29,7 +31,7 @@ const AboutPage = () => {
 
     const isPresent = useIsPresent();
 
-    const {previous} = useScrollNavigation();
+    const {previous, next, previousScreen} = useScrollNavigation();
 
     const exitDelay = useMemo(() => {
         if (isPresent && previous === 'home')
@@ -40,6 +42,10 @@ const AboutPage = () => {
             return {titleDelay: 1.5, imageDelay: 2, textDelay: 2, sliderDelay: 2.5};
         return {titleDelay: 0, imageDelay: 0, textDelay: 0, sliderDelay: 0};
     }, [isPresent, previous]);
+
+    useMouseWheelControl({next, previousScreen});
+    useTouchDragControl({next, previousScreen});
+
     return (
         <AboutPageContainer>
             <PageTitle text="O mnie" color="white" delay={exitDelay.titleDelay} />

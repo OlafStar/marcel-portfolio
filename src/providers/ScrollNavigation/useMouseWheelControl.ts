@@ -5,7 +5,12 @@ import {ScrollNavigationContextType} from '.';
 export default function useMouseWheelControl({
     next: nextScreen,
     previousScreen,
-}: ScrollNavigationContextType<any>) {
+    isPrevented,
+}: {
+    next: () => void;
+    previousScreen: () => void;
+    isPrevented?: boolean;
+}) {
     useEffect(() => {
         const handleMouseWheel = (event: WheelEvent) => {
             if (Math.abs(event.deltaY) > 30) {
@@ -16,11 +21,15 @@ export default function useMouseWheelControl({
                 }
             }
         };
+        if (!isPrevented) {
+            document.addEventListener('wheel', handleMouseWheel);
 
-        document.addEventListener('wheel', handleMouseWheel);
-
-        return () => {
+            return () => {
+                document.removeEventListener('wheel', handleMouseWheel);
+            };
+        }
+        if (isPrevented) {
             document.removeEventListener('wheel', handleMouseWheel);
-        };
-    }, [nextScreen, previousScreen]);
+        }
+    }, [nextScreen, previousScreen, isPrevented]);
 }

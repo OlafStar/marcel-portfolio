@@ -141,8 +141,6 @@ const ScrollNavigationProvider = <T extends string>({
     );
 
     useKeyboardControl(contextValue);
-    useMouseWheelControl(contextValue);
-    useTouchDragControl(contextValue);
     useMouseDragControl(contextValue);
 
     useEffect(() => {

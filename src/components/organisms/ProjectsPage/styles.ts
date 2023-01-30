@@ -51,6 +51,7 @@ export const RightColumn = styled(motion.div)`
 export const ScrollWrapper = styled.div`
     height: calc(100% - 56px);
     overflow-y: scroll;
+    z-index: 10;
 
     ::-webkit-scrollbar {
         display: none;
