@@ -12,8 +12,6 @@ import {
     MeImageMobile,
     ImageContainer,
 } from './styles';
-import Logo from '~public/icons/logo.svg';
-import LogoMobile from '~public/icons/logo-mobile.svg';
 import bg from '~public/icons/background.png';
 import bgMobile from '~public/icons/background-mobile.png';
 import me from '~public/icons/me.png';
@@ -24,6 +22,7 @@ import {useIsPresent} from 'framer-motion';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
 import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
 import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
+import {motion} from 'framer-motion';
 
 const MainPage = () => {
     const {width, height} = useDocumentSize();
@@ -57,15 +56,40 @@ const MainPage = () => {
                 </Content>
                 <Description>{'sometimes less is more'}</Description>
             </DesktopContentContainer>
-            <MobileContentContainer>
-                <TextContainer>
+            <MobileContentContainer exit={{opacity: 0}}>
+                <TextContainer
+                    initial={{opacity: 0, zIndex: 2}}
+                    animate={{opacity: 1}}
+                    transition={{delay: previous ? 1.25 : 0.25}}
+                >
                     <Name>{'Marceli Hajduk'}</Name>
                     <NameDescription>{'UI/UX DESIGNER'}</NameDescription>
                 </TextContainer>
                 <ImageContainer left={leftPositionOfImage / 2}>
-                    <img src={bgMobile.src} />
-                    <MeImageMobile src={meMobile.src} />
+                    <motion.img
+                        src={bgMobile.src}
+                        initial={{
+                            opacity: 0,
+                        }}
+                        animate={{
+                            opacity: 1,
+                        }}
+                        transition={{duration: 0.2, delay: previous ? 1 : 0}}
+                    />
+                    <MeImageMobile
+                        src={meMobile.src}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{delay: previous ? 1.75 : 1}}
+                    />
                 </ImageContainer>
+                <Description
+                    initial={{opacity: 0, y: 25}}
+                    animate={{opacity: 1, y: 0}}
+                    transition={{delay: previous ? 2 : 1.25, duration: 0.3}}
+                >
+                    {'sometimes less is more'}
+                </Description>
             </MobileContentContainer>
         </MainPageContainer>
     );

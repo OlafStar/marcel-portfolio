@@ -4,6 +4,7 @@ import {
     BgAnimationDiv,
     ContactPageContainer,
     ContentContainer,
+    CopyPopUp,
     MailContainer,
     Row,
     TilesContainer,
@@ -21,15 +22,16 @@ import {
     DesktopWrapper,
     MobileWrapper,
 } from '~components/molecules/ContactTile/styles';
-import {easeInOut, useIsPresent} from 'framer-motion';
+import {AnimatePresence, easeInOut, useIsPresent} from 'framer-motion';
 import {useScrollNavigation} from '~providers/ScrollNavigation';
-import {useMemo} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
 import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
 
 const ContactPage = () => {
     const {height} = useDocumentSize();
     const {screen, previous, previousScreen, next} = useScrollNavigation();
+    const [showPopUp, setShowPopUp] = useState(false);
 
     const isPresent = useIsPresent();
 
@@ -54,6 +56,12 @@ const ContactPage = () => {
         if (isPresent && previous === 'about') return {y: '100%'};
     }, [screen, previous, isPresent]);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setShowPopUp(false);
+        }, 3000);
+    }, [setShowPopUp, showPopUp]);
+
     useMouseWheelControl({next, previousScreen});
     useTouchDragControl({next, previousScreen});
 
@@ -63,6 +71,7 @@ const ContactPage = () => {
                 text="Skontaktuj się ze mną"
                 color="black"
                 delay={exitDelay.titleDelay}
+                secondaryText="Click mail to copy"
             />
             <ContentContainer
                 exit={{y: 50, opacity: 0}}
@@ -71,7 +80,10 @@ const ContactPage = () => {
                 transition={{delay: exitDelay.contentDelay}}
             >
                 <MailContainer
-                    onClick={() => copyToClipboard('hajdukmarceli@gmail.com')}
+                    onClick={() => {
+                        setShowPopUp(true);
+                        copyToClipboard('hajdukmarceli@gmail.com');
+                    }}
                 >
                     <MobileWrapper>
                         <MailMobile />
@@ -114,6 +126,17 @@ const ContactPage = () => {
                     }}
                 />
             )}
+            <AnimatePresence>
+                {showPopUp && (
+                    <CopyPopUp
+                        exit={{opacity: 0}}
+                        initial={{opacity: 0, bottom: 0, left: '50%'}}
+                        animate={{opacity: 1, bottom: '30px'}}
+                    >
+                        {'Copied'}
+                    </CopyPopUp>
+                )}
+            </AnimatePresence>
         </ContactPageContainer>
     );
 };

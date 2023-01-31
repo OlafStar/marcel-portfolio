@@ -1,11 +1,13 @@
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
 type ContactPageContainerProps = {
     heightOfSite: number;
 };
 
-export const ContactPageContainer = styled(motion.section)<ContactPageContainerProps>`
+export const ContactPageContainer = styled(
+    motion.section,
+)<ContactPageContainerProps>`
     min-height: 100vh;
     position: relative;
     padding: ${({heightOfSite}) =>
@@ -22,7 +24,7 @@ export const BgAnimationDiv = styled(motion.div)`
     background-color: #2b3135;
     position: absolute;
     inset: 0 0 0 0;
-`
+`;
 
 export const ContentContainer = styled(motion.div)`
     padding-top: 56px;
@@ -58,4 +60,13 @@ export const MailContainer = styled.div`
         width: 100%;
         max-width: 860px;
     }
+`;
+
+export const CopyPopUp = styled(motion.div)`
+    padding: 8px 20px;
+    border-radius: 25px;
+    border: 1px solid black;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-50%);
 `;

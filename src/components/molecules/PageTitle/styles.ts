@@ -32,3 +32,17 @@ export const StyledText = styled.div`
     line-height: 20px;
     text-transform: uppercase;
 `;
+
+export const TextContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+`
+
+export const StyledSecondaryText = styled.div`
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+`;

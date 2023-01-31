@@ -100,7 +100,7 @@ export const MeImage = styled.img`
     z-index: 3;
 `;
 
-export const TextContainer = styled.div`
+export const TextContainer = styled(motion.div)`
     padding-top: 14px;
     @media (max-width: 546px) {
         padding: 0;
@@ -110,14 +110,21 @@ export const TextContainer = styled.div`
     }
 `;
 
-export const Description = styled.div`
+export const Description = styled(motion.div)`
     font-family: Plus Jakarta Sans;
     font-size: 20px;
     font-weight: 400;
     line-height: 25px;
+
+    @media (max-width: 546px) {
+        position: absolute;
+        top: 532px;
+        width: 100%;
+        text-align: center;
+    }
 `;
 
-export const MobileContentContainer = styled.div`
+export const MobileContentContainer = styled(motion.div)`
     position: relative;
     height: 506px;
     @media (min-width: 547px) {
@@ -125,7 +132,7 @@ export const MobileContentContainer = styled.div`
     }
 `;
 
-export const MeImageMobile = styled.img`
+export const MeImageMobile = styled(motion.img)`
     position: absolute;
     top: 0px;
     left: 0;
@@ -136,7 +143,7 @@ type ImageContainerProps = {
     left: number;
 };
 
-export const ImageContainer = styled.div<ImageContainerProps>`
+export const ImageContainer = styled(motion.div)<ImageContainerProps>`
     position: absolute;
     top: -222px;
     left: ${({left}) => left && `${left}px`};
