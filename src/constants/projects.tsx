@@ -9,6 +9,7 @@ export type ProjectsType = {
     link?: {
         text: string;
         url: string;
+        download: string;
     };
 };
 
@@ -20,12 +21,18 @@ const useProjects = () => {
                 imgSrc: ElibImage,
                 link: {
                     text: 'Case study',
-                    url: '#',
+                    url: 'e-lib_case-study.pdf',
+                    download: 'e-lib_case-study.pdf'
                 },
             },
             {
                 name: 'Foodalization',
                 imgSrc: FoodalizationImage,
+                link: {
+                    text: 'Case study',
+                    url: 'foodalization_case-study.pdf',
+                    download: 'foodalization_case-study.pdf'
+                },
             },
         ];
         return projects;

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     ContactTileContainer,
     DesktopWrapper,
     MobileWrapper,
+    StyledLink,
     StyledText,
 } from './styles';
 
@@ -11,14 +12,31 @@ type ContactTileProps = {
     svgMobile: React.ReactNode;
     text: string;
     onClick?: () => void;
+    href?: string;
+    download?: string;
+    target?: string;
 };
 
-const ContactTile = ({svg, svgMobile, text, onClick}: ContactTileProps) => {
+const ContactTile = ({
+    svg,
+    svgMobile,
+    text,
+    onClick,
+    href,
+    download,
+    target
+}: ContactTileProps) => {
     return (
         <ContactTileContainer onClick={onClick}>
             <MobileWrapper>{svgMobile}</MobileWrapper>
             <DesktopWrapper>{svg}</DesktopWrapper>
-            <StyledText>{text}</StyledText>
+            {href ? (
+                <StyledLink href={href} download={download} target={target}>
+                    {text}
+                </StyledLink>
+            ) : (
+                <StyledText>{text}</StyledText>
+            )}
         </ContactTileContainer>
     );
 };

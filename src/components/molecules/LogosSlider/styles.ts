@@ -29,4 +29,13 @@ export const LogosAndText = styled(motion.div)<BottomContainerProps>`
     top: ${({top}) => top && `${top}px`};
 `;
 
-export const LogosContainer = styled.div``;
+export const LogosContainer = styled.div`
+    display: flex;
+    gap: 30px;
+    @media (max-width: 880px) {
+        gap: 20px;
+    }
+    @media (max-width: 448px) {
+      flex-wrap: wrap;
+    }
+`;

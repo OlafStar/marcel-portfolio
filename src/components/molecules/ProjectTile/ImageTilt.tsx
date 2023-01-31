@@ -6,7 +6,6 @@ const ImageTilt = ({src}: {src: string}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {wrapper, onMouseMove, rotateX, rotateY} = useTiltEffect();
 
-    console.log(rotateX)
     return (
         <motion.div
             onHoverStart={() => setIsHovered(true)}

@@ -24,6 +24,7 @@ import {useScrollNavigation} from '~providers/ScrollNavigation';
 import {useMemo} from 'react';
 import useMouseWheelControl from '~providers/ScrollNavigation/useMouseWheelControl';
 import useTouchDragControl from '~providers/ScrollNavigation/useTouchDragControl';
+import Works from '~components/molecules/Works';
 
 const AboutPage = () => {
     const {height} = useDocumentSize();
@@ -108,12 +109,7 @@ const AboutPage = () => {
                             animate={{x: 0, opacity: 1}}
                             transition={{delay: exitDelay.textDelay}}
                         >
-                            <LogoFigma />
-                            <LogoAI />
-                            <LogoPS />
-                            <LogoAE />
-                            <LogoBlender />
-                            <LogoFLStudio />
+                            <Works />
                         </LogosSlider>
                     </MobileWrapper>
                     <ThirdLine
@@ -149,12 +145,7 @@ const AboutPage = () => {
                 animate={{x: 0, opacity: 1}}
                 transition={{delay: exitDelay.sliderDelay}}
             >
-                <LogoFigma />
-                <LogoAI />
-                <LogoPS />
-                <LogoAE />
-                <LogoBlender />
-                <LogoFLStudio />
+                <Works />
             </LogosSlider>
         </AboutPageContainer>
     );
