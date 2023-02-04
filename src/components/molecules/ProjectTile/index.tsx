@@ -15,7 +15,7 @@ const ProjectTile = ({name, imgSrc, link}: ProjectsType) => {
             <TextAndLink>
                 <ProjectName>{name}</ProjectName>
                 <If condition={link}>
-                    <ProjectLink href={link?.url} download={link.download}>{link?.text}</ProjectLink>
+                    <ProjectLink href={link?.url} download={link?.download}>{link?.text}</ProjectLink>
                 </If>
             </TextAndLink>
         </ProjectTileContainer>
