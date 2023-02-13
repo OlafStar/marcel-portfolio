@@ -15,7 +15,7 @@ const Layout: React.FC<LayoutProps> = ({children}) => {
     const {screen} = useScrollNavigation();
     return (
         <>
-            <HTMLHead pageTitle="Marel Portfolio" />
+            <HTMLHead pageTitle="Marceli Hajduk" />
 
             <Container>
                 <LogoContainer color={screen === 'contact' ? 'black' : 'white'}>
