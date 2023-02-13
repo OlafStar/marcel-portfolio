@@ -137,7 +137,7 @@ const AboutPage = () => {
                 <LogoFLStudio />
             </LogosSlider>
             <LogosSlider
-                text={'Programy z których lubię korzystać'}
+                text={'Pare prac które robiłem z zajawki'}
                 bottom={40}
                 right={70}
                 exit={{opacity: 0}}
