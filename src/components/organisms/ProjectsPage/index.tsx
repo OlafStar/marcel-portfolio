@@ -64,7 +64,7 @@ const ProjectsPage = () => {
             onTouchEnd={handleMouseMove}
             onTouchMove={handleMouseMove}
         >
-            <PageTitle text="Projects" color="white" delay={exitDelay.titleDelay} />
+            <PageTitle text="Projekty" color="white" delay={exitDelay.titleDelay} />
             <ScrollWrapper
                 ref={scrollRef}
                 // onMouseOver={() => setIsPrevented(true)}

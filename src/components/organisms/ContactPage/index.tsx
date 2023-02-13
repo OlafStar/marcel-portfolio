@@ -72,7 +72,7 @@ const ContactPage = () => {
                 text="Skontaktuj się ze mną"
                 color="black"
                 delay={exitDelay.titleDelay}
-                secondaryText="Click mail to copy"
+                secondaryText="Kliknij mail"
             />
             <ContentContainer
                 exit={{y: 50, opacity: 0}}
@@ -138,7 +138,7 @@ const ContactPage = () => {
                         initial={{opacity: 0, bottom: 0, left: '50%'}}
                         animate={{opacity: 1, bottom: '30px'}}
                     >
-                        {'Copied'}
+                        {'Skopiowano'}
                     </CopyPopUp>
                 )}
             </AnimatePresence>
