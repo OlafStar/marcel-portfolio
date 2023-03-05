@@ -141,7 +141,7 @@ const AboutPage = () => {
                 bottom={40}
                 right={70}
                 exit={{opacity: 0}}
-                initial={{x: 50, opacity: 0}}
+                initial={{x: 50, opacity: 0, width: 282}}
                 animate={{x: 0, opacity: 1}}
                 transition={{delay: exitDelay.sliderDelay}}
             >

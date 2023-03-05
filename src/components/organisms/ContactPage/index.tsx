@@ -18,6 +18,7 @@ import LinkedInMobile from '~public/icons/linkedIn-mobile.svg';
 import PhoneMobile from '~public/icons/phone-mobile.svg';
 import PdfDesktop from '~public/icons/pdf-desktop.svg';
 import PdfMobile from '~public/icons/pdf-mobile.svg';
+import BehanceDesktop from '~public/icons/behance.svg';
 import ContactTile from '~components/molecules/ContactTile';
 import {
     DesktopWrapper,
@@ -100,7 +101,7 @@ const ContactPage = () => {
                             svgMobile={<LinkedInMobile />}
                             text="linkedin.com/in/marceli-hajduk-760724253"
                             href="https://linkedin.com/in/marceli-hajduk-760724253"
-                            target='_blank'
+                            target="_blank"
                         />
                         <ContactTile
                             svgMobile={<PdfMobile />}
@@ -115,6 +116,13 @@ const ContactPage = () => {
                             svgMobile={<PhoneMobile />}
                             svg={<Phone />}
                             text="668 469 410"
+                        />
+                        <ContactTile
+                            svgMobile={<BehanceDesktop />}
+                            svg={<BehanceDesktop />}
+                            href="https://behance.net/marcelihajduk"
+                            text="behance.net/marcelihajduk"
+                            target='_blank'
                         />
                     </Row>
                 </TilesContainer>
